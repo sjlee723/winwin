@@ -463,17 +463,17 @@ function commentReportAjax(){
 
 
 let likeval = $('.good').data('num'); // 좋아요 상태
-// let objTxt = $(this).closest(".icon").find(".likeCnt>p");
 
 
 $('.good').click(function() {
+    let objTxt = $(this).closest(".first").find(".likeCnt>p");
     if(session_check()) {
         if (likeval == 0) {
             likeval = 1; // 좋아요 추가
-            // objTxt.text(objTxt.text()*1+1);
+            objTxt.text(objTxt.text()*1+1);
         } else if (likeval == 1) {
             likeval = 0; // 좋아요 취소
-            // objTxt.text(objTxt.text()*1-1);
+            objTxt.text(objTxt.text()*1-1);
         }
 
         console.log('===================' + likeval + '==================================');
@@ -539,8 +539,8 @@ let $commentBadBtn = $('.comment-bad');
 // 초기에 선택된 버튼이 없도록 설정
 $commentGoodBtn.removeClass('selected');
 $commentBadBtn.removeClass('selected');
-
-$commentGoodBtn.on('click', function(){
+$("#communityCommentList").on("click", ".comment-good", function () {
+// $commentGoodBtn.on('click', function(){
     if(session_check()) {
         const $button = $(this);
         const isAlreadySelected = $button.hasClass('selected');
@@ -568,7 +568,8 @@ $commentGoodBtn.on('click', function(){
     }
 });
 
-$commentBadBtn.on('click', function(){
+// $commentBadBtn.on('click', function(){
+$("#communityCommentList").on("click", ".comment-bad", function () {
     if(session_check()) {
         const $button = $(this);
         const isAlreadySelected = $button.hasClass('selected');
@@ -587,8 +588,14 @@ $commentBadBtn.on('click', function(){
             $button.addClass('selected');
             $button.find('.bi-hand-thumbs-down-fill').removeClass('hide');
             $button.find('.bi-hand-thumbs-down').addClass('hide');
+            if(! $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up-fill').hasClass("hide")){
+                let obj = $button.closest(".commentAi").find(".likeCnt>p");
+                obj.text(obj.text()*1-1);
+            }
+
             $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up-fill').addClass('hide');
             $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up').removeClass('hide');
+
             fn_comment_bad('d', commentNumber); // 싫어요 추가
         }
     }
