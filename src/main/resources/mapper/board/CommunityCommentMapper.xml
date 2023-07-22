@@ -29,7 +29,14 @@
         FROM WW_USER U JOIN COMMUNITY_COMMENT R
         ON COMMUNITY_NUMBER = #{communityNumber} AND U.USER_NUMBER = R.USER_NUMBER
         LEFT OUTER JOIN COMMUNITY_COMMENT_UD CCU
-        ON R.COMMENT_NUMBER = CCU.COMMENT_NUMBER AND U.USER_NUMBER = CCU.USER_NUMBER
+        ON R.COMMENT_NUMBER = CCU.COMMENT_NUMBER
+        <choose>
+               <when test="sessionUserNumber == null">
+                   AND CCU.USER_NUMBER  = -1
+               </when>
+               <otherwise>AND CCU.USER_NUMBER  = #{sessionUserNumber}</otherwise>
+        </choose>
+
         LEFT OUTER JOIN USER_PFP P
         ON R.USER_NUMBER = P.USER_NUMBER
         LEFT OUTER JOIN GRADE G
