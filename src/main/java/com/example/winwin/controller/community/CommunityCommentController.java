@@ -52,6 +52,7 @@ public class CommunityCommentController {
 
     @DeleteMapping("/{commentNumber}")
     public void commentRemove(@PathVariable("commentNumber") Long commentNumber){
+        communityCommentService.deleteCommentUd(commentNumber);
         communityCommentService.remove(commentNumber);
     }
 
