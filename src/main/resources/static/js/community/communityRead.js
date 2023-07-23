@@ -50,8 +50,15 @@ const communityNumber = $('.community-num').val();
 $('.commentBtn').on('click', function(){
     let content = $('.comment1').val().trim();
     console.log(content);
+
+    if (loginNumber == null){
+        alert("로그인 후 이용바랍니다.");
+        $('.login-move').trigger('click');
+        return;
+    }
+
     if(content == ''){
-        alert("로그인이 필요한 서비스 입니다.")
+        alert("댓글 내용이 없습니다.")
         return;
     }
 
