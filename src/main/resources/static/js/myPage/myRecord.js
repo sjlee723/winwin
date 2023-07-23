@@ -76,7 +76,7 @@ $('.btn-codeview').remove();
 function diaryList(result) {
      let text = '';
 
-    if (result.length == 0) {
+    if (result.length == 0 && page == 1) {
         text = `
           <div class="community-main-box-size">
             <span>앗! 등록된 내 기록이 없어요.😿<br/>

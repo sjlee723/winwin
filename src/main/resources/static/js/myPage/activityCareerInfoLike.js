@@ -17,7 +17,7 @@ function getListPage(pageInfo, appendList, error) {
         type: 'get',
         dataType: 'json',
         success: function (result) {
-            console.log(result);
+            // console.log(result);
             if (appendList) {
                 appendList(result);
             }
@@ -30,7 +30,7 @@ function appendList(map) {
     let text = ``;
     let flag = 0;
 
-    if (map.activeBoardVoList.length == 0) {
+    if (map.activeBoardVoList.length == 0 && page == 1) {
         text = `
           <div class="community-main-box">
             <span>앗! 아직 관심 글이 없습니다.😿 <br/>

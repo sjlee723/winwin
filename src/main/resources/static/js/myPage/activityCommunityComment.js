@@ -28,7 +28,7 @@ function getListPage(pageInfo, appendList, error) {
 function appendList(map) {
     let text = '';
 
-    if (map.activeCommentVoList.length == 0) {
+    if (map.activeCommentVoList.length == 0 & page == 1) {
         text = `
           <div class="community-main-box-size">
             <span>앗! 활동 내역이 없어요.😿<br/>

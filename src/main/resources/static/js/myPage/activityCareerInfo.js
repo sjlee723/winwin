@@ -32,7 +32,7 @@ function appendList(map) {
     let text = ``;
     let flag = 0;
 
-    if (map.activeBoardVoList.length == 0) {
+    if (map.activeBoardVoList.length == 0 && page == 1) {
         text = `
           <div class="community-main-box">
             <span>앗! 아직 작성한 글이 없습니다.😿 <br/>
