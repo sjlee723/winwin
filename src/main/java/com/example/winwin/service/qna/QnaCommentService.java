@@ -17,6 +17,7 @@ import java.util.Optional;
 @Transactional
 public class QnaCommentService {
     private final QnaCommentMapper qnaCommentMapper;
+    private final QnaCommentUdMapper qnaCommentUdMapper;
     private final QnaCommentUdService qnaCommentUdService;
 
     public void registerQnaComment(QnaCommentDto qnaCommentDto){
@@ -75,4 +76,13 @@ public class QnaCommentService {
 
         return qnaCommentMapper.findQnaCommentUdList(qnaCommentVo);
     }
+
+    public void deleteQnaCommentUd(Long commentNumber){
+        if (commentNumber == null) {
+            throw new IllegalArgumentException("댓글 번호 누락");
+        }
+        qnaCommentUdMapper.deleteQnaCommentUd(commentNumber);
+    }
+
+
 }

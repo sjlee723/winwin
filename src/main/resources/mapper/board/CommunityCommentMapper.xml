@@ -36,7 +36,6 @@
                </when>
                <otherwise>AND CCU.USER_NUMBER  = #{sessionUserNumber}</otherwise>
         </choose>
-
         LEFT OUTER JOIN USER_PFP P
         ON R.USER_NUMBER = P.USER_NUMBER
         LEFT OUTER JOIN GRADE G

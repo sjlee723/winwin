@@ -60,11 +60,14 @@ console.log('userNumber'+'====================================');
 let qnaNumber = $('.qna-num').val();
 
 $('.good-btn').click(function() {
+    let objTxt = $(this).closest(".first").find(".likeCnt>p");
     if(session_check()) {
         if (likeval == 0) {
             likeval = 1; // 좋아요 추가
+            objTxt.text(objTxt.text()*1+1);
         } else if (likeval == 1) {
             likeval = 0; // 좋아요 취소
+            objTxt.text(objTxt.text()*1-1);
         }
 
         console.log('===================' + likeval + '==================================');
@@ -81,13 +84,13 @@ $('.good-btn').click(function() {
             success: function (data) {
                 $('.good-btn').data('num', likeval);
                 console.log($('.good-btn').data('num'));
-                if (likeval == 1) {
-                    // alert('성공!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
-                } else if (likeval == 0) {
-                    // alert('취소 성공');
+                if (likeval == 0) {
+                    $('.good').find('.bi-hand-thumbs-up-fill').addClass('hide');
+                    $('.good').find('.bi-hand-thumbs-up').removeClass('hide');
+                } else if (likeval == 1) {
+                    $('.good').find('.bi-hand-thumbs-up-fill').removeClass('hide');
+                    $('.good').find('.bi-hand-thumbs-up').addClass('hide');
                 }
-                // $(this).closest('.good-btn').find('.bi-hand-thumbs-up-fill').toggleClass('hide');
-                // $(this).closest('.good-btn').find('.bi-hand-thumbs-up').toggleClass('hide');
             }
         });
     }
@@ -515,7 +518,7 @@ let $commentBadBtn = $('.comment-bad');
 $commentGoodBtn.removeClass('selected');
 $commentBadBtn.removeClass('selected');
 
-$commentGoodBtn.on('click', function(){
+$("#qnaCommentList").on("click", ".comment-good", function () {
     if(session_check()){
         const $button = $(this);
         const isAlreadySelected = $button.hasClass('selected');
@@ -544,7 +547,7 @@ $commentGoodBtn.on('click', function(){
     }
 });
 
-$commentBadBtn.on('click', function(){
+$("#qnaCommentList").on("click", ".comment-bad", function () {
     if(session_check()){
         const $button = $(this);
         const isAlreadySelected = $button.hasClass('selected');
@@ -563,6 +566,11 @@ $commentBadBtn.on('click', function(){
             $button.addClass('selected');
             $button.find('.bi-hand-thumbs-down-fill').removeClass('hide');
             $button.find('.bi-hand-thumbs-down').addClass('hide');
+            if(! $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up-fill').hasClass("hide")){
+                let obj = $button.closest(".commentAi").find(".likeCnt>p");
+                obj.text(obj.text()*1-1);
+            }
+
             $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up-fill').addClass('hide');
             $button.closest('.comment-bad').siblings('.comment-good').find('.bi-hand-thumbs-up').removeClass('hide');
             fn_comment_bad('d', commentNumber); // 싫어요 추가
