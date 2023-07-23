@@ -593,8 +593,10 @@ public class MyPageService {
         userInfoMapper.deleteMentorReview(userNumber);
         userInfoMapper.deleteMentorLike(userNumber);
         userInfoMapper.deleteUmBridge(userNumber);
-        userInfoMapper.deleteMentorSkill(mentorNumber);
-        userInfoMapper.deleteMentorCareer(mentorNumber);
+        if(mentorNumber != null){
+            userInfoMapper.deleteMentorSkill(mentorNumber);
+            userInfoMapper.deleteMentorCareer(mentorNumber);
+        }
         userInfoMapper.deleteMentorProfile(userNumber);
         userInfoMapper.deleteMentor(userNumber);
         userInfoMapper.deleteWingShare(userNumber);
@@ -614,7 +616,6 @@ public class MyPageService {
             userInfoMapper.deleteQsBridge(qnaNumberList);
         }
         userInfoMapper.deleteQnaGood(userNumber);
-        //qnaNumberList
         userInfoMapper.deleteQnaCommentUd(userNumber, qnaNumberList);
         userInfoMapper.deleteQnaComment(userNumber);
         userInfoMapper.deleteQna(userNumber);
