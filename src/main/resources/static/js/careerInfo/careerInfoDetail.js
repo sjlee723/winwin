@@ -80,7 +80,9 @@ function showComment(result) {
                 <div class="reply-content1">
                     <div class="profile-wrap">
                         <div class="profile-icon-wrap">
-                            <img class="profile-icon-img" src="../../static/img/careerpathdetail.png">
+                        ${c.pfpSystemName == null ?
+                         '<img class="profile-icon-img" src="/img/profile-basic.png"/>' :
+                         '<img class="profile-icon-img" src=/profile/' + c.pfpUuid + '_' + c.pfpSystemName +'>'}
                         </div>
                         <div class="profile-text-wrap">
                             <div><span class="profile-text-id">${c.userNickname}</span></div>
@@ -130,9 +132,13 @@ $('.submit-btn').on('click', function () {
         return;
     }
 
-    let content = $('#content').val();
+    let content = $('#content').val().trim();
     let boardNumber = $('.careerInfo-num').val();
-    comment.register({commentContent: content, careerInfoNumber: boardNumber});
+
+    if (content != null && content != ''){
+    comment.register({commentContent: content, careerInfoNumber: boardNumber}, function (){
+        comment.getList(obj, showComment, showError)}, showError);
+    }
 
     $('#content').val('');
 
@@ -142,7 +148,7 @@ $('.submit-btn').on('click', function () {
         page : page
     }
 
-    comment.getList(obj, showComment, showError);
+    // comment.getList(obj, showComment, showError);
 });
 
 // 진로정보 댓글 삭제하기
@@ -166,18 +172,22 @@ $('.reply').on('click', '.remove-btn', function () {
 
 // 진로정보 댓글 수정하기
 $('.reply').on('click', '.modify-btn', function () {
+
     let content = $(this).closest('.reply-cardbox').find('.reply-text');
     let num = $(this).closest('.reply').find('.reply-cardbox').data('num');
     let content1 = $(this).closest('.reply-cardbox').find('.reply-text').text();
+
     console.log(num);
     console.log(content);
+
     content.replaceWith(`
     <div class='modify-box'>
     <textarea class='modify-content'>${content1}</textarea>
     <button type='button' class='modify-content-btn'>수정 완료</button>
     </div>
     `);
-    // $('comment-btn__box').addClass('.none');
+
+    $('.btn-sub-wrap').addClass('none');
 });
 
 // 진로정보 댓글 수정 완료처리

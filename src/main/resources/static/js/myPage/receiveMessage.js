@@ -161,7 +161,7 @@ function getListPage(pageInfo, appendList, error) {
 function appendList(map) {
     let text = '';
 
-    if (map.chattingVoList.length == 0) {
+    if (map.chattingVoList.length == 0 && pageNumber == 1) {
         text = `
           <div class="community-main-box">
             <span>앗! 받은 쪽지가 없어요.😿<br/>
