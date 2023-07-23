@@ -503,32 +503,6 @@ $('.good').click(function() {
     }
 });
 
-// BK가 한거..
-// let goodStatus = $('.comment-good').data('udstatus');
-// let boardNumber = $('.community-num').val();
-//
-// $(".comment-good").on("click", function (){
-//     goodStatus(boardNumber)
-// })
-//
-// function goodStatus(communityNumber){
-//     $.ajax({
-//         type : 'post',
-//         url : '/uds/goodUp',
-//         data : {
-//             communityNumber : communityNumber
-//         },
-//
-//         success : function (reuslt){
-//             let goodCnt = parseInt($('.likeCnt').text());
-//             $('.likeCnt').text(goodCnt + parseInt(result));
-//             $(".comment-good ").find(".bi-hand-thumbs-up").toggleClass("none");
-//             $(".comment-good").find(".bi-hand-thumbs-up-fill").toggleClass("none");
-//         }
-//
-//     });
-//
-// }
 
 //==========================
 // 댓글 좋아요, 싫어요 구현 영역
@@ -539,6 +513,7 @@ let $commentBadBtn = $('.comment-bad');
 // 초기에 선택된 버튼이 없도록 설정
 $commentGoodBtn.removeClass('selected');
 $commentBadBtn.removeClass('selected');
+
 $("#communityCommentList").on("click", ".comment-good", function () {
 // $commentGoodBtn.on('click', function(){
     if(session_check()) {
