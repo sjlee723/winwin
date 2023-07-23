@@ -489,11 +489,12 @@ footer{
     border: 1px solid #ddd;
     background-color: #fff;
     border-radius: 3.5px;
+    padding: 40px;
 }
 
 .profil{
     display: flex;
-    margin: 25px 25px;
+    /*margin: 25px 25px;*/
 }
 
 .profil>img{
@@ -501,7 +502,7 @@ footer{
 }
 
 .profil>.Commento{
-    margin: -14px 10px;
+    /*margin: -14px 10px;*/
     width: 100px;
 }
 
@@ -522,7 +523,7 @@ footer{
 .Aicontent{
     /*margin: 40px 25px;*/
     /*margin-top: -20px;*/
-    margin-left: 30px;
+    /*margin-left: 30px;*/
     font-size: 15px;
     line-height: 20px;
 }
@@ -533,7 +534,7 @@ footer{
 
 .answer{
     width: 650px;
-    margin: auto;
+    /*margin: auto;*/
     color: #1b5192;
     border-radius: 3.5px;
     background-color: #e8f1fc;
@@ -568,9 +569,9 @@ footer{
 }
 
 .comment-goodorbad{
-    margin-left: 280px;
+    /*margin-left: 280px;*/
     display: flex;
-    margin-bottom: -9px;
+    /*margin-bottom: -9px;*/
 }
 
 
@@ -654,7 +655,7 @@ footer{
 
 .img-box{
     flex-direction: column-reverse;
-    margin-bottom: 24px;
+    /*margin-bottom: 24px;*/
     border-radius: 3.5px;
     width: 50px;
     height: 50px;
@@ -733,8 +734,8 @@ footer{
 .dropdown2{
     position : relative;
     display : inline-block;
-    margin-left: 440px;
-    margin-top: -10px;
+    /*margin-left: 440px;*/
+    /*margin-top: -10px;*/
 }
 
 .dropbtn2{
