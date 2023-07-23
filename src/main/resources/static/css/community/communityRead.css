@@ -281,13 +281,16 @@ footer{
 /* svg 아이콘 ================================ */
 .icon{
     display: flex;
-    margin: 0 190px;
-    height: 40px;
+    align-items: center;
+    width: 650px;
+    margin: auto;
+    justify-content: space-between;
 }
 
 .read-count{
     display: flex;
     height: 17px;
+    align-items: center;
 }
 
 .readCount-btn{
@@ -300,15 +303,14 @@ footer{
 
 .readCount-num{
     color: rgb(148, 155, 160);
-    margin: 27px 3px;
     font-size: 13px;
+    margin-left: 5px;
 }
 
 .check{
     display: flex;
-    margin-top: 1.5px;
-    margin-left: -13px;
-    height: 10px;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .check-btn{
@@ -322,13 +324,10 @@ footer{
 
 .checkCnt{
     color: rgb(148, 155, 160);
-    margin: -13px -2px;
     font-size: 13px;
+    margin-left: 5px;
 }
 
-.checkCnt > p {
-    margin: 38.5px -4px;
-}
 
 .hide{
     display: none;
@@ -336,8 +335,8 @@ footer{
 
 .like{
     display: flex;
-    margin-top: -10px;
-    margin-left: 13px;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .like-btn{
@@ -347,24 +346,22 @@ footer{
     cursor: pointer;
 }
 
-.likeCnt p{
+.likeCnt p {
     font-size: 13px;
     color: rgb(148, 155, 160);
-    margin: 38px 0;
+    margin-left: 5px;
 }
 /* svg 아이콘 ================================ */
 
 .date{
-    margin: 27px 455px;
     font-size: 13px;
     color: rgb(148, 155, 160);
 }
 
 .date1{
-    margin-left: 560px;
     font-size: 13px;
     color: rgb(148, 155, 160);
-    line-height: 5.5;
+    /*line-height: 5.5;*/
 }
 
 .justbox{
@@ -484,7 +481,7 @@ footer{
 }
 
 .commentAi{
-    width: 700px;
+    width: 650px;
     margin: auto;
     border: 1px solid #ddd;
     background-color: #fff;
@@ -494,6 +491,7 @@ footer{
 
 .profil{
     display: flex;
+    justify-content: space-between;
     /*margin: 25px 25px;*/
 }
 
@@ -501,9 +499,10 @@ footer{
     border-radius: 70%;
 }
 
-.profil>.Commento{
+.profile-wrap>.Commento{
     /*margin: -14px 10px;*/
     width: 100px;
+    margin-left: 10px;
 }
 
 .c-Application{
@@ -521,11 +520,9 @@ footer{
 }
 
 .Aicontent{
-    /*margin: 40px 25px;*/
-    /*margin-top: -20px;*/
-    /*margin-left: 30px;*/
     font-size: 15px;
     line-height: 20px;
+    margin: 20px 0px;
 }
 
 .answer-box{
@@ -533,7 +530,7 @@ footer{
 }
 
 .answer{
-    width: 650px;
+    /*width: 650px;*/
     /*margin: auto;*/
     color: #1b5192;
     border-radius: 3.5px;
@@ -542,6 +539,8 @@ footer{
     display: flex;
     font-size: 14px;
     align-items: center;
+    justify-content: space-between;
+    padding: 0px 15px;
 }
 
 .answer-board{
@@ -554,11 +553,13 @@ footer{
     display: flex;
     font-size: 14px;
     align-items: center;
+    margin-bottom: 20px;
 }
 
 
 .icon2{
     display: flex;
+    justify-content: space-between;
     /*margin: 40px 0;*/
 }
 
@@ -569,9 +570,8 @@ footer{
 }
 
 .comment-goodorbad{
-    /*margin-left: 280px;*/
     display: flex;
-    /*margin-bottom: -9px;*/
+    align-items: center;
 }
 
 
@@ -589,13 +589,13 @@ footer{
     color: #1b5192;
     background-color: #e8f1fc;
     cursor: pointer;
-    margin-top: -5px;
-    margin-left: 100px;
 }
 
 
 .empty-box3{
-    width: 15px;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
 }
 
 .bad{
@@ -610,12 +610,13 @@ footer{
     color: #1b5192;
     background-color: #e8f1fc;
     cursor: pointer;
-    margin-bottom: 4px;
+    /*margin-bottom: 4px;*/
+    display: flex;
+    align-items: center;
 }
 
 .parent{
-    height: 60px;
-    border-bottom: 1px solid #ddd;
+    margin: 20px 0px;
 }
 
 .newComment{
@@ -656,7 +657,7 @@ footer{
 .img-box{
     flex-direction: column-reverse;
     /*margin-bottom: 24px;*/
-    border-radius: 3.5px;
+    border-radius: 50%;
     width: 50px;
     height: 50px;
     background-size: 100%;
@@ -949,7 +950,7 @@ input[type="checkbox"] {
 }
 
 .userInfo{
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     font-size: 16px;
     font-weight: 600;
     margin-bottom: 3px;
@@ -976,3 +977,21 @@ input[type="checkbox"] {
 .gradeName-text{
     color: #5e5e5e;
 }
+
+.profile-wrap{
+    display: flex;
+    align-items: center;
+}
+
+.icon-wrap{
+    display: flex;
+    align-items: center;
+}
+
+
+
+
+
+
+
+
