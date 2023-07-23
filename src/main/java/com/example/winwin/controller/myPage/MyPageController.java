@@ -266,6 +266,8 @@ public class MyPageController {
                 e.printStackTrace();
             }
         }
+        req.getSession().setAttribute("userNickname", userDto.getUserNickname());
+        
         return new RedirectView("/myPage/userInfoModify");
     }
 
