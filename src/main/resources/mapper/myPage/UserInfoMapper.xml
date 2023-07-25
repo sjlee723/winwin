@@ -95,6 +95,10 @@
         SELECT QNA_NUMBER FROM QNA WHERE USER_NUMBER = #{userNumber}
     </select>
 
+    <select id="selectCareerInfoNumber" resultType="long">
+        SELECT CAREERINFO_NUMBER FROM CAREERINFO WHERE USER_NUMBER = #{userNumber}
+    </select>
+
 <!--    회원 삭제 -->
 <!--    USER와 1:1 연결된 테이블-->
     <delete id="deleteTodo"> DELETE FROM TODO WHERE USER_NUMBER = #{userNumber} </delete>
@@ -126,14 +130,41 @@
     <delete id="deletePoliceBoard"> DELETE FROM POLICE_BOARD WHERE USER_NUMBER = #{userNumber} </delete>
 
 <!--    진로정보-->
-    <delete id="deleteCareerInfoComment"> DELETE FROM CAREERINFO_COMMENT WHERE USER_NUMBER = #{userNumber} </delete>
-    <delete id="deleteCareerInfoLike"> DELETE FROM CAREERINFO_LIKE WHERE USER_NUMBER = #{userNumber} </delete>
+    <delete id="deleteCareerInfoComment"> DELETE FROM CAREERINFO_COMMENT WHERE USER_NUMBER = #{userNumber}
+        <if test="careerInfoNumberList.size != 0">
+           OR CAREERINFO_NUMBER IN
+            <foreach collection="careerInfoNumberList" item="careerInfoNumber" open="(" close=")" separator=",">
+                #{careerInfoNumber}
+            </foreach>
+        </if>
+    </delete>
+    <delete id="deleteCareerInfoLike"> DELETE FROM CAREERINFO_LIKE WHERE USER_NUMBER = #{userNumber}
+        <if test="careerInfoNumberList.size != 0">
+            OR CAREERINFO_NUMBER IN
+            <foreach collection="careerInfoNumberList" item="careerInfoNumber" open="(" close=")" separator=",">
+                #{careerInfoNumber}
+            </foreach>
+        </if>
+    </delete>
+
     <delete id="deleteCareerInfo"> DELETE FROM CAREERINFO WHERE USER_NUMBER = #{userNumber} </delete>
 
 <!--    멘토-->
-    <delete id="deleteMentorReview"> DELETE FROM MENTOR_REVIEW WHERE USER_NUMBER = #{userNumber} </delete>
-    <delete id="deleteMentorLike"> DELETE FROM MENTOR_LIKE WHERE USER_NUMBER = #{userNumber} </delete>
-    <delete id="deleteUmBridge"> DELETE FROM UM_BRIDGE WHERE USER_NUMBER = #{userNumber} </delete>
+    <delete id="deleteMentorReview"> DELETE FROM MENTOR_REVIEW WHERE USER_NUMBER = #{userNumber}
+        <if test="mentorNumber != null">
+            OR MENTOR_NUMBER = #{mentorNumber}
+        </if>
+    </delete>
+    <delete id="deleteMentorLike"> DELETE FROM MENTOR_LIKE WHERE USER_NUMBER = #{userNumber}
+        <if test="mentorNumber != null">
+            OR MENTOR_NUMBER = #{mentorNumber}
+        </if>
+    </delete>
+    <delete id="deleteUmBridge"> DELETE FROM UM_BRIDGE WHERE USER_NUMBER = #{userNumber}
+        <if test="mentorNumber != null">
+            OR MENTOR_NUMBER = #{mentorNumber}
+        </if>
+    </delete>
     <delete id="deleteMentorSkill"> DELETE FROM MENTOR_SKILL WHERE MENTOR_NUMBER = #{mentorNumber} </delete>
     <delete id="deleteMentorCareer"> DELETE FROM MENTOR_CAREER WHERE MENTOR_NUMBER = #{mentorNumber} </delete>
     <delete id="deleteMentorProfile"> DELETE FROM MENTOR_PROFILE WHERE USER_NUMBER = #{userNumber} </delete>

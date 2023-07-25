@@ -560,6 +560,7 @@ public class MyPageService {
         List<Long> shareNumberList = userInfoMapper.selectShareNumber(userNumber);
         List<Long> communityNumberList = userInfoMapper.selectCommunityNumber(userNumber);
         List<Long> qnaNumberList = userInfoMapper.selectQnaNumber(userNumber);
+        List<Long> careerInfoNumberList = userInfoMapper.selectCareerInfoNumber(userNumber);
 
         removeProfile(userNumber);
         resumeNumberList.forEach((resumeNumber)->removeResumeFile(resumeNumber));
@@ -582,24 +583,27 @@ public class MyPageService {
         userInfoMapper.deleteStudyLike(userNumber);
         userInfoMapper.deleteStudyComment(userNumber);
         userInfoMapper.deleteStudy(userNumber);
-
         userInfoMapper.deleteCsComment(userNumber);
         userInfoMapper.deleteCs(userNumber);
         userInfoMapper.deletePoliceComment(userNumber);
         userInfoMapper.deletePoliceBoard(userNumber);
-        userInfoMapper.deleteCareerInfoComment(userNumber);
-        userInfoMapper.deleteCareerInfoLike(userNumber);
+        userInfoMapper.deleteCareerInfoComment(userNumber, careerInfoNumberList);
+        userInfoMapper.deleteCareerInfoLike(userNumber, careerInfoNumberList);
         userInfoMapper.deleteCareerInfo(userNumber);
-        userInfoMapper.deleteMentorReview(userNumber);
-        userInfoMapper.deleteMentorLike(userNumber);
-        userInfoMapper.deleteUmBridge(userNumber);
+        userInfoMapper.deleteMentorReview(userNumber, mentorNumber);
+        userInfoMapper.deleteMentorLike(userNumber, mentorNumber);
+        userInfoMapper.deleteUmBridge(userNumber, mentorNumber);
         if(mentorNumber != null){
             userInfoMapper.deleteMentorSkill(mentorNumber);
             userInfoMapper.deleteMentorCareer(mentorNumber);
         }
+        System.out.println("+++++111111");
         userInfoMapper.deleteMentorProfile(userNumber);
+        System.out.println("+++++111112");
         userInfoMapper.deleteMentor(userNumber);
+        System.out.println("+++++111114");
         userInfoMapper.deleteWingShare(userNumber);
+        System.out.println("+++++22222");
         if(shareNumberList.size() != 0) {
             userInfoMapper.deleteShareFile(shareNumberList);
         }
@@ -611,6 +615,7 @@ public class MyPageService {
         if(communityNumberList.size() != 0) {
             userInfoMapper.deleteCommunityFile(communityNumberList);
         }
+        System.out.println("+++++33333");
         userInfoMapper.deleteCommunity(userNumber);
         if(qnaNumberList.size() != 0) {
             userInfoMapper.deleteQsBridge(qnaNumberList);
@@ -620,7 +625,9 @@ public class MyPageService {
         userInfoMapper.deleteQnaComment(userNumber);
         userInfoMapper.deleteQna(userNumber);
 
+        System.out.println("+++++55555");
         userInfoMapper.deleteUser(userNumber);
+        System.out.println("+++++66666");
     }
 
 }
