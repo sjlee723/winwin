@@ -46,6 +46,9 @@ public interface UserInfoMapper {
     public List<Long> selectCommunityNumber(Long userNumber);
     //qna 글번호 리스트
     public List<Long> selectQnaNumber(Long userNumber);
+    //진로정보 글번호 리스트
+    public List<Long> selectCareerInfoNumber(Long userNumber);
+
 
     public void deleteTodo(Long userNumber);
     public void deleteResumePr(Long userNumber);
@@ -66,12 +69,12 @@ public interface UserInfoMapper {
     public void deleteCs(Long userNumber);
     public void deletePoliceComment(Long userNumber);
     public void deletePoliceBoard(Long userNumber);
-    public void deleteCareerInfoComment(Long userNumber);
-    public void deleteCareerInfoLike(Long userNumber);
+    public void deleteCareerInfoComment(Long userNumber, List<Long> careerInfoNumberList);
+    public void deleteCareerInfoLike(Long userNumber, List<Long> careerInfoNumberList);
     public void deleteCareerInfo(Long userNumber);
-    public void deleteMentorReview(Long userNumber);
-    public void deleteMentorLike(Long userNumber);
-    public void deleteUmBridge(Long userNumber);
+    public void deleteMentorReview(Long userNumber, Long mentorNumber);
+    public void deleteMentorLike(Long userNumber, Long mentorNumber);
+    public void deleteUmBridge(Long userNumber, Long mentorNumber);
     public void deleteMentorSkill(Long mentorNumber);
     public void deleteMentorCareer(Long mentorNumber);
     public void deleteMentorProfile(Long userNumber);
